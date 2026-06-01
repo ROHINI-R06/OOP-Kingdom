@@ -1,0 +1,23 @@
+## Maven build output
+/kingdom/target/
+
+## Java artifacts
+*.class
+*.jar
+*.war
+*.ear
+
+## Logs
+*.log
+
+## IDE/editor
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+.vscode/
+
+## OS files
+.DS_Store
+Thumbs.db
