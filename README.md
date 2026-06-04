@@ -65,10 +65,12 @@ Every entity implements `KingdomEntity` — the core contract every building in 
 ## 📜 The Rules
 
 - **Language**: Java only. No exceptions.
-- **PR limit**: Maximum 2 PRs per contributor per week
-- **UML required**: Every PR must include a UML diagram of your class
-- **Core files are off-limits**: `KingdomEntity.java`, `Kingdom.java`, `CityHall.java` are maintainer-only
-- **The kingdom must always compile**: Your PR must pass CI — if it breaks existing code, it gets rejected
+- **PR Scope**: Each PR must focus on **exactly one class** and **its test class**, along with updating `contributors.json`. Do not bundle multiple classes in a single PR.
+- **No Issue Claiming**: There is no issue claiming or pre-booking. Multiple builders can submit implementations for the same quest entity; the best design wins the merge.
+- **PR limit**: Maximum 2 PRs per contributor per week.
+- **UML required**: Every PR must include a UML diagram of your class.
+- **Core files are off-limits**: `KingdomEntity.java`, `Kingdom.java`, `CityHall.java` are maintainer-only.
+- **The kingdom must always compile**: Your PR must pass CI. If it breaks existing code, it gets rejected. See [Building and Testing](docs/BUILD.md) for commands.
 
 ---
 
@@ -90,19 +92,27 @@ Check [`quests/week-01/quest.md`](quests/week-01/quest.md) for this week's avail
 
 ### 2. Implement your class
 
-- Must implement `KingdomEntity` interface
-- Must follow [Code Standards](docs/CODE_STANDARDS.md)
-- Must include a UML diagram in your PR
+- Must implement `KingdomEntity` interface (extending its abstract contract).
+- Must follow [Code Standards](docs/CODE_STANDARDS.md) and strict naming conventions (e.g. `Market.java` and `MarketTest.java`).
+- **Extra Methods**: You can implement extra properties, getters/setters, or business logic methods beyond the quest contract.
+- Must include a UML diagram in your PR.
 
-### 3. Raise a PR
+### 3. Write and Run Tests
+
+- You **must** write unit tests for your implementation, verifying all features and Jackson serialization.
+- **Test Extra Methods**: You must also write unit tests for any extra methods you added.
+- Refer to [BUILD.md](docs/BUILD.md) for compiling and test running commands.
+
+### 4. Raise a PR
 
 Use the [PR Template](.github/PULL_REQUEST_TEMPLATE.md). Include:
 
-- Your UML diagram
-- A brief explanation of your design decisions
-- Passing CI
+- Your UML diagram.
+- A brief explanation of your design decisions.
+- Passing CI checks.
+- **An update to `contributors.json`**: Add your name for the classes you have worked on. If you are extending or modifying a class originally done by others, **do not overwrite their name** — append your name separated by a comma (e.g., `"Lumberyard": "OriginalAuthor, YourGitHubUsername"`).
 
-### 4. Community Review
+### 5. Community Review
 
 Other contributors review your PR against the [Review Rubric](docs/REVIEW_RUBRIC.md). Best design wins the merge.
 
@@ -128,11 +138,13 @@ oop-kingdom/
 ├── state/                    # Kingdom's persistent state
 │   ├── kingdom.json
 │   └── entities.json
-├── docs/
+├── docs/                     # Documentation and guides
 │   ├── CONTRIBUTING.md
 │   ├── CODE_STANDARDS.md
+│   ├── CODE_STRUCTURE.md
 │   ├── REVIEW_RUBRIC.md
-│   └── RANKS.md
+│   ├── RANKS.md
+│   └── BUILD.md
 ├── contributors.json
 └── README.md
 ```
@@ -168,9 +180,12 @@ oop-kingdom/
 ## 📚 Read More
 
 - [Chronicles of OOP Kingdom](chronicles/chapter-00.md) — The full story
-- [Contributing Guide](docs/CONTRIBUTING.md) — Detailed contribution rules
+- [Contributing Guide](.github/CONTRIBUTING.md) — Detailed contribution rules
+- [Building & Testing Guide](docs/BUILD.md) — How to run the code locally
 - [Code Standards](docs/CODE_STANDARDS.md) — Java OOP rules we enforce
+- [Code Structure](docs/CODE_STRUCTURE.md) — Repository structure and layout
 - [Review Rubric](docs/REVIEW_RUBRIC.md) — How PRs are judged
+- [Contributor Ranks](docs/RANKS.md) — Contributor ranks and rewards
 
 ---
 

@@ -47,7 +47,7 @@ classDiagram
 
 **Code Quality:**
 - [ ] Code follows strict naming conventions (e.g., `Lumberyard.java`, `LumberyardTest.java`)
-- [ ] Only my entity class and test file were modified (no other files touched!)
+- [ ] Only my entity class, its test class, and `contributors.json` were modified (no other files touched!)
 - [ ] All abstract methods are implemented
 - [ ] Default constructor initializes safe defaults with UUID
 - [ ] Jackson `@JsonProperty` annotations present on all fields
@@ -55,6 +55,7 @@ classDiagram
 
 **Testing:**
 - [ ] Unit tests are comprehensive and test business logic
+- [ ] Any extra methods implemented have corresponding unit tests verifying their correctness
 - [ ] Unit tests verify Jackson serialization works correctly
 - [ ] All tests pass locally with `mvn clean test`
 - [ ] Application boots without errors with `mvn exec:java -Dexec.mainClass="kingdom.Main"`
@@ -62,13 +63,14 @@ classDiagram
 **CI & Documentation:**
 - [ ] CI passes (GitHub Actions)
 - [ ] UML diagram included showing class relationships
-- [ ] No modifications to README, pom.xml, Main.java, or any configuration files
+- [ ] No modifications to README, pom.xml, Main.java, or other core files
+- [ ] `contributors.json` updated (name added, or appended with comma if extending an existing class)
 - [ ] Commit message(s) are clear and descriptive
 
 ---
 
 ## 📝 Design Notes
-*Explain any key design decisions, edge cases handled, or interesting implementation choices.*
+*Explain any key design decisions, edge cases handled, or interesting implementation choices. If you added extra methods, list them and explain their purpose.*
 
 ---
 
@@ -78,10 +80,11 @@ classDiagram
 
 ---
 
-> 💡 **Reminder:** Only 2 files may be modified in this PR:
+> 💡 **Reminder:** Only 3 files should be modified in this PR:
 > 1. Your implementation class (e.g., `Lumberyard.java`)
 > 2. Your test class (e.g., `LumberyardTest.java`)
+> 3. The `contributors.json` file to log your credit
 >
-> Any other file modifications will result in automatic PR closure without merge.
+> Any other file modifications (except under docs if approved by maintainers) will result in automatic PR rejection.
 >
-> See [PR Submission Guidelines](../../quests/template.md) for complete details.
+> See [Quest Submission Guidelines](../quests/template.md) for complete details.

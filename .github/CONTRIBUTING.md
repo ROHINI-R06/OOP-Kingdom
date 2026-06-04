@@ -1,128 +1,88 @@
 # 🏰 Contributing to OOP Kingdom
 
-Welcome, Builder! Thank you for your interest in contributing to the OOP Kingdom project.
-
-## 📚 Quick Start
-
-1. **Read the Chronicles**: Start with [Chapter 00](../chronicles/chapter-00.md) and [Chapter 01](../chronicles/chapter-01.md) to understand our philosophy
-2. **View Week 1 Quest**: Check [quests/week-01/quest.md](../quests/week-01/quest.md) for this week's available entities
-3. **Follow Guidelines**: Reference [quests/template.md](../quests/template.md) for comprehensive submission rules
-4. **Submit Your PR**: Push your code and create a PR using the [📋 PR Template](PULL_REQUEST_TEMPLATE.md)
+Welcome, Builder! Thank you for your interest in contributing to the OOP Kingdom project. This document outlines our guidelines to ensure all contributions are consistent and of high quality.
 
 ---
 
-## 🎯 The Essentials
+## 🚀 Quick Start Checklist
 
-### 1. Choose Your Entity
-- **Lumberyard**: Master of wood harvesting and resource management
-- **Barracks**: Commander of training and troop deployment
-- **Blacksmith**: Keeper of forging and weapon craftsmanship
-- **Market**: Merchant of trade and commerce
+1. **Read the Lore**: Learn about the kingdom's history in [Chapter 00](../chronicles/chapter-00.md) and [Chapter 01](../chronicles/chapter-01.md).
+2. **Find a Quest**: Check [quests/week-01/quest.md](../quests/week-01/quest.md) (or the latest week) for available entities.
+3. **Write the Code**: Implement your entity class, write tests, compile, and run tests locally.
+4. **Update contributors.json**: Add your username or append it using the comma-separated rule.
+5. **Create UML**: Draw a Mermaid UML diagram.
+6. **Submit PR**: Open a PR using our [Pull Request Template](PULL_REQUEST_TEMPLATE.md).
 
-### 2. Implement with Excellence
-- Extend the abstract class: `public class Lumberyard extends AbstractLumberyard`
-- Implement all abstract methods with custom logic
-- Use `@JsonProperty` annotations on all fields
-- Initialize defaults safely in your constructor (UUID-based identities recommended)
-- Register your class: `static { KingdomRegistry.register(Lumberyard.class); }`
+---
 
-### 3. Test Thoroughly
-```bash
-mvn clean test
-```
-- Write comprehensive unit tests
-- Test Jackson serialization/deserialization
-- Verify your entity integrates with CityHall and Farm
+## 🎯 Contribution Guidelines
 
-### 4. Include UML Diagram
-Document your class hierarchy and relationships using Mermaid:
-```mermaid
-classDiagram
-  KingdomEntity <|-- AbstractLumberyard
-  AbstractLumberyard <|-- Lumberyard
-```
+### 1. Scope of a Pull Request
+- **One Class per PR**: Each PR must focus on the implementation of **exactly one entity class** and **its corresponding test class**, plus the update to `contributors.json`. Do not combine multiple classes or unrelated changes in a single PR.
+- **No Claiming Issues**: We do not use "issue claiming" or pre-booking. Multiple builders can submit implementations for the same quest entity. The best-designed, highest-scoring implementation based on the [Review Rubric](../docs/REVIEW_RUBRIC.md) gets merged!
 
-### 5. Follow Naming Conventions
-- **Class**: `Lumberyard.java` (PascalCase)
-- **Test**: `LumberyardTest.java` (PascalCase + Test)
-- **Methods**: `harvestWood()`, `getWoodStockpile()` (camelCase)
-- **Fields**: `woodStockpile`, `harvestRate` (camelCase, all @JsonProperty)
+### 2. Implementation Rules
+- **Contracts**: Your class must implement the `KingdomEntity` interface and extend the appropriate quest contract (e.g., `public class Lumberyard extends AbstractLumberyard`).
+- **Extra Methods**: You are allowed and encouraged to implement extra properties, getters/setters, or business logic methods beyond the abstract contract to make your class richer and more functional.
+- **Serialization**: Make sure all fields are annotated with Jackson `@JsonProperty` annotations for state saving.
+- **Default Constructor**: Must initialize safe defaults (such as UUID-based identities and current dates).
+- **Registration**: Include a static block to register your class with the `KingdomRegistry`:
+  ```java
+  static {
+      KingdomRegistry.register(YourClass.class);
+  }
+  ```
+
+### 3. Naming Conventions
+Follow these strict naming rules:
+- **Classes**: `PascalCase` matching the contract name (e.g., `Market.java`, `Blacksmith.java`).
+- **Test Classes**: `PascalCase` with `Test` suffix (e.g., `MarketTest.java`, `BlacksmithTest.java`).
+- **Methods**: `camelCase` (e.g., `harvestWood()`, `getWoodStockpile()`).
+- **Variables / Fields**: `camelCase` (e.g., `woodStockpile`, `foundingDate`).
+- **Constants**: `UPPER_SNAKE_CASE` (e.g., `MAX_CAPACITY`).
+
+### 4. Writing and Running Tests
+- **Comprehensive Coverage**: Write unit tests verifying your class's default constructor, core contract methods, and Jackson serialization/deserialization.
+- **Testing Extra Methods**: If you implemented any extra methods, you **must** write unit tests for them to ensure full coverage and correctness.
+- **Execution**: Run all tests locally prior to submission. Refer to [BUILD.md](../docs/BUILD.md) for detailed commands.
+  ```bash
+  cd kingdom
+  mvn clean test
+  ```
+
+### 5. Updating contributors.json
+You must update `contributors.json` in the root of the repository to receive official credit:
+- **New Classes**: Add your class and username: `"YourClassName": "YourGitHubUsername"`.
+- **Extending/Modifying Existing Classes**: Only list your name for classes you have actively worked on. If you are extending or modifying a class originally created by another contributor, **do not overwrite their name**. Append your username separated by a comma:
+  ```json
+  "Lumberyard": "OriginalAuthor, YourGitHubUsername"
+  ```
+
+---
+
+## 🛠️ Compiling and Testing Commands
+
+All build and test commands must be run from the `kingdom` subdirectory.
+- **Compile**: `mvn clean compile`
+- **Run Tests**: `mvn clean test`
+- **Boot Sanity Check**: `mvn exec:java -Dexec.mainClass="kingdom.Main"`
+
+For troubleshooting or detailed instructions, see the dedicated [BUILD.md](../docs/BUILD.md) guide.
 
 ---
 
 ## ❌ Do NOT
 
-- ❌ Modify other files (only your entity + test allowed!)
-- ❌ Modify `pom.xml`, `Main.java`, or any core files
-- ❌ Copy code from other contributors
-- ❌ Skip writing tests
-- ❌ Use AI code generators (heavily discouraged, lower scoring)
-- ❌ Violate ethical guidelines (plagiarism = permanent ban)
+- ❌ Modify core files (`KingdomEntity.java`, `Kingdom.java`, `CityHall.java`, etc.).
+- ❌ Submit PRs containing multiple class implementations.
+- ❌ Skip writing unit tests or leave extra methods untested.
+- ❌ Overwrite other contributors' names in `contributors.json` when extending their work.
+- ❌ Copy code directly from other contributors (plagiarism results in rejection).
 
 ---
 
-## ✅ Do
+## 🏆 Review & Ranks
 
-- ✅ Write custom, original code
-- ✅ Test your implementation thoroughly
-- ✅ Include comprehensive Javadoc
-- ✅ Create a detailed UML diagram
-- ✅ Push early and often
-- ✅ Ask questions in issue discussions
-- ✅ Review other contributions
-- ✅ Learn and have fun!
+All submissions are scored out of 60 points based on the [Review Rubric](../docs/REVIEW_RUBRIC.md). As you get PRs merged, you will progress through ranks detailed in [RANKS.md](../docs/RANKS.md) (Settler → Craftsman → Architect → Royal Council).
 
----
-
-## 🏆 Recognition
-
-Merged contributions are recognized in:
-- ✨ **Hall of Contributors**: Your name on the official website
-- 📊 **Ranking System**: Settler → Craftsman → Architect → Royal Council
-- 🏅 **Hall of Fame**: Permanent record of excellence
-
----
-
-## 📋 Full Submission Checklist
-
-See [quests/template.md](../quests/template.md) for:
-- Pre-submission checklist (✅ 9 items)
-- File modification rules
-- Do's & Don'ts (📋 22 items)
-- PR submission steps
-- PR title/description format
-- FAQ with 6 common questions
-
----
-
-## 🔄 Review Process
-
-1. **CI Validation**: GitHub Actions must pass (compile, test, boot)
-2. **Code Review**: Maintainers score on 60-point rubric:
-   - ✅ CI Pass (Mandatory)
-   - 📋 Requirements (10 pts): Abstract methods implemented
-   - 🎨 OOP Quality (20 pts): Design, encapsulation, cohesion
-   - 🔧 Extensibility (10 pts): Easy to build upon
-   - 📊 UML (10 pts): Clear documentation
-   - 📝 Naming (10 pts): Conventions followed
-
-3. **Best PR Wins**: Highest-scoring implementation for each entity merges first
-
-4. **Website Credit**: Within 24 hours of merge, you're added to Hall of Contributors
-
----
-
-## 💬 Questions?
-
-- Check [FAQ in PR Template](PULL_REQUEST_TEMPLATE.md)
-- Read [REVIEW_RUBRIC.md](../docs/REVIEW_RUBRIC.md) for scoring details
-- Open a discussion in an existing issue
-- Post in issue comments with your question
-
----
-
-## 🚀 Ready?
-
-**[➡️ View Week 1 Quest](../quests/week-01/quest.md)**
-
-**⚔️ The kingdom awaits. Will you answer the call?**
+If you have any questions, feel free to open a discussion or post questions in the relevant quest issue. Happy building!
