@@ -169,6 +169,12 @@ contributors.json        # Updated with your credit
 
 Do **not** bundle multiple entities, modify core files (`KingdomEntity.java`, `Kingdom.java`, `CityHall.java`, `pom.xml`), or touch unrelated configuration.
 
+### No Pre-Booking — Anyone Can Build
+
+There is **no issue claiming or pre-booking.** Multiple contributors can implement the same quest entity. Everyone submits their best design, the community scores them using the [Review Rubric](docs/REVIEW_RUBRIC.md), and the highest-scoring implementation gets merged.
+
+**Build something better, not faster.**
+
 ### Naming Conventions
 
 | Thing | Convention | Example |

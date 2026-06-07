@@ -33,6 +33,8 @@ The kingdom requires its foundational structures to support the growing populati
 8. **Create a UML diagram** (optional — save in `uml/yourclass.md`, include only directly related classes, earns bonus points during review)
 9. **Submit a PR** using the [PR Template](../.github/PULL_REQUEST_TEMPLATE.md)
 
+> **Note:** No pre-booking — multiple contributors can implement the same entity. The best design wins the merge.
+
 ---
 
 ## 📚 Reference
