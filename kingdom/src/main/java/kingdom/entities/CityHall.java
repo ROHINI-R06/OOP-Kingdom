@@ -52,7 +52,7 @@ public class CityHall implements CityHallContract {
         this.name = name;
         this.description = "";
         this.foundingDate = LocalDate.now();
-        this.status = Status.UNDER_CONSTRUCTION;
+        this.status = Status.OPERATIONAL;
         this.cityEntities = new ArrayList<>();
     }
 

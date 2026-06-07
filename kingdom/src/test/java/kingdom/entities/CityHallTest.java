@@ -33,7 +33,7 @@ class CityHallTest {
 
     @Test
     void testDefaultStatus() {
-        assertEquals(KingdomEntity.Status.UNDER_CONSTRUCTION, cityHall.getStatus());
+        assertEquals(KingdomEntity.Status.OPERATIONAL, cityHall.getStatus());
     }
 
     @Test

@@ -72,6 +72,7 @@ public class Lumberyard extends AbstractLumberyard {
         this.name = name;
         this.harvestRate = harvestRate;
         this.maxCapacity = maxCapacity;
+        this.status = Status.OPERATIONAL;
     }
 
     /**
